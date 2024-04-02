@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form id="addFolderForm" style="display: none;">
+        <input type="text" id="name" name="name" placeholder="Folder Name">
+        <input type="submit" value="Add Folder">
+    </form>
+    <form id="addSubFolderForm" style="display: none;">
+        <input type="text" id="subfoldername" name="name" placeholder="Subfolder Name">
+        <input type="submit" value="Add Sub Folder">
+    </form>
+    <form id= "addTableForm" style="display: none;">
+      <input type="text" name="brand" id="brand" placeholder="Enter Brand"> <br>
+      <input type="text" name="description" id="description" placeholder="Add Description"><br>
+      <input type="text" name= "member" id="members" placeholder="Add members"><br>
+      <input type="text" name = "categories"  id= "categories" placeholder="Add categories"><br>
+      <input type="text" name = "tags" id = "tags" placeholder="Add Tags"><br>
+      <input type="text" name="nextMeet" id="nextMeet" placeholder="Next Meeting?"><br>
+      <input type="submit" >
+    </form>
+    <div class="left">
+      <header>
+        <img class="icon" src="./icon.png" alt="" />
+        <div class="companyName">
+          <p>INC</p>
+          <h3>InnovateHub</h3>
+        </div>
+        <img class="profilePic" src="./mobile.png" alt="" />
+      </header>
+      <div class="teams">
+        <div>
+          <i class="fa-solid fa-pen-nib"></i>
+          <h5>Design Team</h5>
+          <div class="count">
+            <img src="./command.png" alt="" />
+            <p>+1</p>
+          </div>
+        </div>
+        <div>
+          <i class="fa-solid fa-volume-low"></i>
+          <h5>Marketing Team</h5>
+          <div class="count">
+            <img src="./command.png" alt="" />
+            <p>+2</p>
+          </div>
+        </div>
+        <div>
+          <i class="fa-solid fa-code"></i>
+          <h5>Development Team</h5>
+          <div class="count">
+            <img src="./command.png" alt="" />
+            <p>+3</p>
+          </div>
+        </div>
+      </div>
+      <div class="folders">
+        <div class="dropdown" onclick="handleDropDown()">
+          <h5>
+            Folders
+          </h5>
+          <i class="fa-solid fa-circle-plus"></i>
+        </div>
+        <div class="folder" style="position: relative;">
+             <div><h5><i class="fa-solid fa-folder" style="margin-right: 5px"></i>Products<i class="fa-solid fa-caret-down" style="position: absolute; right: 0; margin-right: 5px;"></i></h5></div>
+                <div class = "subFolder">
+                    <h5>RoadMap</h5>
+                </div>
+                <div id = "addSub" class="subFolder" onclick="addNewSubFolder(this)">
+                    <h5><i class="fa-regular fa-square-plus" style="margin-right: 5px;"></i>Add new sub</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer">
+          <div style="display: flex; justify-content: flex-start; width: 90%;">
+            
+            <h5><i class="fa-solid fa-user-plus"></i> Invite Teammates</h5>
+          </div>
+          <div style="display: flex; width: 90%; justify-content: space-between; align-items: center;">
+            
+            <h5><i class="fa-solid fa-volume-low"></i> Marketing Team</h5>
+            <h5 style="background-color: rgb(136, 136, 136); color: white; width: fit-content; padding: 0 5px; border-radius: 4px;">0/6</h5>
+          </div>
+          <div style="display: flex; width: 90%; justify-content: space-between; align-items: center;">
+           
+            <h5>7 Days left on trail</h5>
+            <h5 style="background-color: rgb(7, 7, 7); color: white; width: fit-content; padding: 3px 8px; border-radius: 4px;">
+            Add Billing</h5>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="right">
+        <header>
+            <div class="teamName">Design</div>
+            <div class="div2">
+                <div class="search-container">
+                      <input type="text" placeholder="Search.." name="search">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                  </div>
+                  <div>
+                    <i class="fa-regular fa-comments" style="margin: 0 10px;"></i>
+                  </div>
+                  <div>
+                    <i class="fa-solid fa-gear"></i>
+                  </div>
+            </div>    
+        </header>
+        <div class="header2">
+            <div class="div1">
+                <div class="button"><i class="fa-solid fa-border-all"></i>  All Brands</div>
+                <div class="button">
+                    Desk <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <div class="button">Tags <i class="fa-solid fa-caret-down"></i></div>
+                <div class="button"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort</div>
+                <div class="button"><i class="fa-solid fa-filter"></i> Filter</div>
+            </div>
+            <div class="div2">
+                <div class="button"><i class="fa-solid fa-square-plus"></i> Meeting</div>
+                <div class="button"><i class="fa-solid fa-file-import"></i> Import/Export</div>
+            </div>
+        </div>
+        <table id="table">
+            <tr class="head">
+                <th id="addBrand" onclick="addBrandClick()">Brand <i class="fa-solid fa-plus" style="margin-left: 5px;"></i></th>
+                <th>Description</th>
+                <th>Members</th>
+                <th>Categories</th>
+                <th>Tags</th>
+                <th>Next Meeting</th>
+            </tr>
+            <tr onclick="handleBrandClick(this)">
+                <td class="brand">
+                  <div style="display: flex; align-items: center;">
+
+                    <input type="checkbox" id="brand" name="brand" checked  style="margin: 0 5px; display: none;" />
+                    <label for="brand">
+                      <div style="display: flex; align-items: center;">
+                        <img src="./assets/wix.png" alt="" style="height: 20px; margin-right: 5px;">
+                        Wix
+                      </div>
+                      </label>
+                  </div>
+                </td>
+                <td class="description">Set up your own website in easy steps.</td>
+                <td class="members">
+                  <div class="memberPics">
+                    <div></div>
+                    <img src="/assets/1.jpg" alt="">
+                    <img src="/assets/2.jpg" alt="">
+                    <img src="/assets/3.jpg" alt="">
+                    <img src="/assets/4.jpg" alt="">
+                    <div></div>
+                  </div>
+                </td>
+                <td class="categories">
+                    <div class="tag">Design</div>
+                    <div class="tag">Website</div>
+                </td>
+                <td>
+                    <div class="tag">webdesign</div>
+                    <div class="tag">design</div>
+                </td>
+                <td><div class="time">in 30 minutes</div></td>
+            </tr>
+        </table>
+        <footer>
+          <div class="div1 button"> <span id = "brandCount">0</span> Selected</div>
+          <div class="div2 button"><i class="fa-solid fa-box-archive"></i> Archive</div>
+          <div class="div3 button"><i class="fa-solid fa-trash"></i> Delete</div>
+          <div class="div4 button">More <i class="fa-solid fa-caret-down"></i></div>
+          <i class="fa-solid fa-xmark"></i>
+        </footer>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
