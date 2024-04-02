@@ -175,3 +175,4 @@ for(let i = 0; i < memberPics.length; i++){
     memberPics[i].style.left = `${left}%`;
 }
 
+//setting the delete button
