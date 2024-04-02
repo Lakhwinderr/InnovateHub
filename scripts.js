@@ -176,3 +176,12 @@ for(let i = 0; i < memberPics.length; i++){
 }
 
 //setting the delete button
+const handleDelete =() =>{
+    const deleteTheseRows = document.querySelectorAll(".countIt");
+    for(const row of deleteTheseRows){
+        row.remove();
+    }
+    //update the count to 0
+    const count = document.getElementById("brandCount");
+    count.innerText = 0;
+}
